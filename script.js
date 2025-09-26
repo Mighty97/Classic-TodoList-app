@@ -2,7 +2,7 @@
 let todoListArray = [];
 
 listTodoEach();
-// putting input tetx in a variable
+// putting input text in a variable
 let inputText = document.querySelector('.js-input');
 
 let todoHTML = '';
@@ -12,7 +12,7 @@ function listTodoEach (){
   let todoHTML = '';
   for(let i=0; i<todoListArray.length; i++){
     const todo = todoListArray[i];
-    const html = `<p><ul><li>${todo}</li></ul></p>`;
+    const html = `<p class='each-todo'>${todo}</p>`;
     todoHTML += html;
   }
   document.querySelector('.js-display').innerHTML = todoHTML;
@@ -27,6 +27,16 @@ function listTodoEach (){
     });
   }
   addTodoToArray();
+
+  // make clear all button active
+
+    function clearButton() {
+      document.querySelector('.js-clear-button').addEventListener('click', () =>{
+        todoListArray = [];
+        listTodoEach();
+      });
+    }
+clearButton();
 
 // pressing enter key onkeyboard to add
   document.body.addEventListener('keydown', () =>{
